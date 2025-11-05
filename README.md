@@ -1,161 +1,196 @@
 # LLM Context Demo
 
-An interactive educational web application demonstrating how context affects Large Language Model (LLM) responses. This tool helps developers and AI enthusiasts understand the crucial role of context in LLM interactions.
+Une application web éducative interactive démontrant comment le contexte affecte les réponses des Large Language Models (LLM). Cet outil aide les développeurs et passionnés d'IA à comprendre le rôle crucial du contexte dans les interactions avec les LLM.
 
-## 🌐 Live Demo
+## 🌐 Démo en ligne
 
-Visit the live application: [https://agentmaurice.github.io/llm-context-demo/](https://agentmaurice.github.io/llm-context-demo/)
+Visitez l'application : [https://agentmaurice.github.io/llm-context-demo/](https://agentmaurice.github.io/llm-context-demo/)
 
-## 🎯 Purpose
+![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/agentmaurice/llm-context-demo)
 
-This application provides hands-on experience with various LLM concepts:
-- **Context management**: See how different contexts influence responses
-- **System prompts**: Learn how to shape model behavior
-- **Few-shot learning**: Understand pattern learning through examples
-- **Parameter tuning**: Experiment with temperature and token limits
-- **Prompt injection**: Test security considerations
+## 🎯 Objectif
 
-## ✨ Features
+Cette application offre une expérience pratique avec différents concepts LLM :
+- **Gestion du contexte** : Observez comment différents contextes influencent les réponses
+- **Prompts système** : Apprenez à façonner le comportement du modèle
+- **Few-shot learning** : Comprenez l'apprentissage par exemples
+- **Ajustement des paramètres** : Expérimentez avec température et limites de tokens
+- **Injection de prompt** : Testez les considérations de sécurité
+- **RAG** : Découvrez la génération augmentée par récupération
+- **MCP** : Explorez le Model Context Protocol pour les appels d'outils
 
-### 10 Educational Steps
+## ✨ Fonctionnalités
 
-1. **No Context**: Baseline queries without any context
-2. **System Role**: Adding a system message to define behavior
-3. **Conversation History**: Building on previous interactions
-4. **Few-shot Learning**: Teaching output format through examples
-5. **Format Instructions**: Precise control over response structure
-6. **Context Conflicts**: Handling contradictory instructions
-7. **RAG Simulation**: Context with embedded data (Retrieval-Augmented Generation)
-8. **Temperature Control**: Interactive parameter adjustment
-9. **Long Context**: Managing extended conversation history
-10. **Prompt Injection**: Security testing against malicious inputs
+### 12 Étapes éducatives progressives
 
-### 2 Bonus Tools
+0. **Anatomie d'un appel API** : Structure complète d'une requête HTTP vers un LLM
+1. **Sans contexte** : Requêtes de base sans contexte
+2. **Rôle système** : Ajout d'un message système pour définir le comportement
+3. **Historique de conversation** : Construction basée sur les interactions précédentes
+4. **Few-shot learning** : Apprentissage du format de sortie par exemples
+5. **Instructions de formatage** : Contrôle précis de la structure de réponse
+6. **Conflits de contexte** : Gestion d'instructions contradictoires
+7. **RAG (Retrieval-Augmented Generation)** : Injection de données dans le contexte
+8. **Contrôle de température** : Ajustement interactif des paramètres
+9. **Long contexte** : Gestion d'un historique de conversation étendu
+10. **Injection de prompt** : Tests de sécurité contre les entrées malveillantes
+11. **MCP (Model Context Protocol)** : Orchestration d'appels d'outils externes dynamiques
 
-- **Comparator**: Side-by-side comparison of two different contexts
-- **Free Editor**: Build your own custom context message by message
+### 2 Outils Bonus
 
-### User Interface
+- **Comparateur** : Comparaison côte à côte de deux contextes différents
+- **Éditeur libre** : Construisez votre propre contexte message par message
 
-- **Sidebar Navigation**: Jump to any step without following a sequence
-- **Context Visualization**: See the exact JSON sent to the API
-- **Real-time Response**: View complete API responses
-- **Persistent API Key**: Your OpenAI key is stored locally in your browser
+### Interface utilisateur moderne
 
-## 🚀 Getting Started
+- **Navigation latérale avec icônes** : Interface shadcn/ui élégante avec icônes lucide-react
+- **Questions suggérées** : Chaque étape propose une question pertinente pour tester le concept
+- **Réinitialisation automatique** : Les champs se vident automatiquement lors du changement d'étape
+- **Mini-conclusions** : Explication de ce qu'il faut observer après chaque résultat
+- **Visualisation du contexte** : Voir exactement le JSON envoyé à l'API
+- **Réponse en temps réel** : Affichage complet des réponses API
+- **Page d'accueil** : Présentation complète avec QR code et lien GitHub
+- **Clé API persistante** : Votre clé OpenAI est stockée localement dans votre navigateur
 
-### Prerequisites
+## 🚀 Démarrage
 
-- Node.js (v18 or higher)
-- An OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
+### Prérequis
+
+- Node.js (v18 ou supérieur)
+- Une clé API OpenAI ([Obtenez-en une ici](https://platform.openai.com/api-keys))
 
 ### Installation
 
-1. Clone the repository:
+1. Clonez le dépôt :
 ```bash
 git clone https://github.com/agentmaurice/llm-context-demo.git
 cd llm-context-demo
 ```
 
-2. Install dependencies:
+2. Installez les dépendances :
 ```bash
 npm install
 ```
 
-3. Start the development server:
+3. Démarrez le serveur de développement :
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+4. Ouvrez votre navigateur et accédez à `http://localhost:5173/llm-context-demo/`
 
-### Building for Production
+### Build pour production
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 🔑 API Key Configuration
+### Déploiement sur GitHub Pages
 
-1. On first launch, you'll be prompted to enter your OpenAI API key
-2. The key is stored in your browser's localStorage (never sent to any server except OpenAI)
-3. You can reconfigure your API key anytime via the sidebar link
+Le projet est configuré pour être déployé automatiquement sur GitHub Pages via GitHub Actions. Chaque push sur la branche `main` déclenche un déploiement automatique.
 
-**Security Note**: Your API key remains in your browser. This application makes direct calls to OpenAI from your browser.
+## 🔑 Configuration de la clé API
 
-## 🛠️ Technology Stack
+1. Au premier lancement, vous serez invité à entrer votre clé API OpenAI
+2. La clé est stockée dans le localStorage de votre navigateur (jamais envoyée à un serveur tiers, uniquement à OpenAI)
+3. Vous pouvez reconfigurer votre clé API à tout moment via le lien dans la barre latérale ou la page de configuration
 
-- **React 18** - UI framework
-- **Vite** - Build tool and dev server
-- **React Router** - Client-side routing
-- **Tailwind CSS** - Styling
-- **OpenAI API** - GPT-4 model (gpt-4o)
+**Note de sécurité** : Votre clé API reste dans votre navigateur. Cette application effectue des appels directs à OpenAI depuis votre navigateur.
 
-## 📚 Learning Path
+## 🛠️ Stack technologique
 
-### Recommended Order for Beginners
+- **React 18** - Framework UI avec hooks
+- **Vite** - Outil de build et serveur de développement
+- **React Router** - Routage côté client
+- **Tailwind CSS** - Styling utility-first
+- **shadcn/ui** - Composants UI modernes (Button, Badge, Separator)
+- **Lucide React** - Bibliothèque d'icônes
+- **OpenAI API** - Modèles GPT-4 (gpt-4o et gpt-4-turbo)
+- **GitHub Actions** - CI/CD pour déploiement automatique
 
-1. Start with **Step 1** (No Context) to see baseline behavior
-2. Progress through **Steps 2-3** to understand system roles and history
-3. Try **Step 4-5** to learn output control techniques
-4. Experiment with **Step 8** to understand temperature effects
-5. Use the **Free Editor** to create your own experiments
+## 📚 Parcours d'apprentissage
 
-### For Advanced Users
+### Ordre recommandé pour les débutants
 
-- **Step 6**: Study context priority handling
-- **Step 7**: Understand RAG implementation
-- **Step 9**: Test token limit management
-- **Step 10**: Explore security vulnerabilities
-- **Comparator**: A/B test different approaches
+1. Commencez par **l'Étape 0** (Anatomie d'un appel API) pour comprendre la structure technique
+2. Continuez avec **l'Étape 1** (Sans contexte) pour voir le comportement de base
+3. Progressez à travers les **Étapes 2-3** pour comprendre les rôles système et l'historique
+4. Essayez les **Étapes 4-5** pour apprendre les techniques de contrôle de sortie
+5. Expérimentez avec **l'Étape 8** pour comprendre les effets de la température
+6. Utilisez **l'Éditeur libre** pour créer vos propres expériences
 
-## 🎓 Key Concepts Explained
+### Pour les utilisateurs avancés
 
-### Context Window
-The conversation history and instructions sent with each API request. Everything in the context affects the model's response.
+- **Étape 6** : Étudiez la gestion des priorités de contexte
+- **Étape 7** : Comprenez l'implémentation du RAG
+- **Étape 9** : Testez la gestion des limites de tokens
+- **Étape 10** : Explorez les vulnérabilités de sécurité
+- **Étape 11** : Découvrez le Model Context Protocol et l'orchestration d'outils
+- **Comparateur** : Testez A/B différentes approches
 
-### System Prompts
-Special messages that define the assistant's role, behavior, and constraints. They typically have higher priority than user messages.
+## 🎓 Concepts clés expliqués
+
+### Fenêtre de contexte (Context Window)
+L'historique de conversation et les instructions envoyés avec chaque requête API. Tout ce qui est dans le contexte affecte la réponse du modèle.
+
+### Prompts système
+Messages spéciaux qui définissent le rôle, le comportement et les contraintes de l'assistant. Ils ont généralement une priorité plus élevée que les messages utilisateur.
 
 ### Few-shot Learning
-Providing examples in the context to teach the model a specific pattern or format without explicit instructions.
+Fournir des exemples dans le contexte pour enseigner au modèle un pattern ou format spécifique sans instructions explicites. Le modèle apprend par l'exemple.
 
-### Temperature
-Controls randomness in responses:
-- **0.0**: Deterministic, focused responses
-- **1.0**: Balanced creativity and coherence (default)
-- **2.0**: Maximum creativity and randomness
+### Température
+Contrôle le caractère aléatoire des réponses :
+- **0.0** : Réponses déterministes et concentrées
+- **1.0** : Équilibre entre créativité et cohérence (par défaut)
+- **2.0** : Créativité et aléatoire maximum
 
 ### RAG (Retrieval-Augmented Generation)
-Embedding relevant data in the context to ground responses in specific information rather than relying solely on training data.
+Intégration de données pertinentes dans le contexte pour ancrer les réponses dans des informations spécifiques plutôt que de s'appuyer uniquement sur les données d'entraînement. Les données sont injectées AVANT l'appel au LLM.
 
-## 🤝 Contributing
+### MCP (Model Context Protocol)
+Protocole standardisé permettant aux LLMs d'appeler dynamiquement des outils externes via un orchestrateur. Contrairement au RAG, le LLM DEMANDE les données PENDANT sa génération. Le MCP suit le protocole JSON-RPC 2.0 avec deux phases principales :
+- **tools/list** : Découverte des outils disponibles
+- **tools/call** : Exécution d'un outil spécifique
 
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new educational steps
-- Improve documentation
-- Submit pull requests
+### Injection de prompt
+Vulnérabilité de sécurité où un utilisateur malveillant tente de contourner les instructions système en injectant ses propres commandes. Protection via instructions système fermes et validation des entrées.
 
-## 📝 License
+## 🤝 Contribution
 
-This project is open source and available for educational purposes.
+Les contributions sont les bienvenues ! N'hésitez pas à :
+- Signaler des bugs
+- Suggérer de nouvelles étapes éducatives
+- Améliorer la documentation
+- Soumettre des pull requests
+- Traduire l'interface dans d'autres langues
 
-## ⚠️ Disclaimer
+## 📝 Licence
 
-This application uses the OpenAI API which incurs costs based on usage. Please monitor your API usage and set appropriate limits in your OpenAI account.
+Ce projet est open source et disponible à des fins éducatives.
 
-## 🔗 Resources
+## ⚠️ Avertissement
 
-- [OpenAI API Documentation](https://platform.openai.com/docs)
-- [Prompt Engineering Guide](https://www.promptingguide.ai/)
-- [React Documentation](https://react.dev/)
+Cette application utilise l'API OpenAI qui entraîne des coûts basés sur l'utilisation. Veuillez surveiller votre utilisation de l'API et définir des limites appropriées dans votre compte OpenAI.
+
+**Coûts estimés** : Chaque requête consomme des tokens (voir le champ `usage` dans les réponses). Les étapes avec long contexte (9, 11) consomment plus de tokens.
+
+## 🔗 Ressources
+
+- [Documentation API OpenAI](https://platform.openai.com/docs)
+- [Guide Prompt Engineering](https://www.promptingguide.ai/)
+- [Documentation React](https://react.dev/)
+- [Documentation shadcn/ui](https://ui.shadcn.com/)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [Lucide Icons](https://lucide.dev/)
 
 ## 📧 Contact
 
-For questions or feedback, please open an issue on GitHub.
+Pour des questions ou des retours, veuillez ouvrir une issue sur GitHub.
 
 ---
 
-Made with ❤️ for the AI learning community
+**Fait avec ❤️ pour la communauté d'apprentissage de l'IA**
+
+🌟 **N'oubliez pas de mettre une étoile au projet si vous l'avez trouvé utile !**
