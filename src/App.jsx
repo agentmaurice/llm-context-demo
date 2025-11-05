@@ -20,7 +20,8 @@ import {
   Wrench,
   Globe,
   Lightbulb,
-  Github
+  Github,
+  CheckCircle
 } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { Separator } from "./components/ui/separator";
@@ -42,6 +43,7 @@ const STEPS = [
   { path: "/step11", label: "MCP / Tool Use", icon: Wrench, step: "11" },
   { path: "/comparator", label: "Comparateur", icon: GitCompare, step: "Bonus" },
   { path: "/editor", label: "Éditeur libre", icon: PenTool, step: "Bonus" },
+  { path: "/conclusion", label: "Conclusion", icon: CheckCircle, step: "Fin" },
 ];
 
 function Navigation() {
@@ -805,6 +807,288 @@ function Editor() {
   );
 }
 
+function ConclusionPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8 space-y-6">
+      {/* Header */}
+      <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="flex items-center gap-3 mb-2">
+          <CheckCircle className="w-8 h-8 text-green-500" />
+          <h2 className="text-2xl font-bold text-slate-800">Conclusion : Les défis d'une plateforme LLM en production</h2>
+        </div>
+        <p className="text-slate-600 mt-2">
+          Cette démo vous a permis d'explorer les concepts fondamentaux des LLMs. Créer une plateforme de production comme AgentMaurice nécessite de maîtriser ces problématiques à grande échelle.
+        </p>
+      </div>
+
+      {/* AgentMaurice Presentation */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl shadow-lg p-8 border-2 border-blue-200">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex-shrink-0">
+            <img
+              src="https://agentmaurice.ai/logo.jpg"
+              alt="AgentMaurice Logo"
+              className="w-24 h-24 rounded-xl shadow-md"
+            />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-2xl font-bold text-slate-800 mb-2">AgentMaurice</h3>
+            <p className="text-lg text-slate-700 mb-3 italic">"Make your apps AI‑First, focused on business value"</p>
+            <p className="text-slate-600">
+              Plateforme d'orchestration MCP permettant l'implémentation de modèles de langage à l'échelle de l'entreprise avec des workflows visuels, la gouvernance, l'observabilité et le déploiement SaaS ou on-premise.
+            </p>
+            <Button
+              onClick={() => window.open('https://agentmaurice.ai', '_blank')}
+              className="mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+            >
+              Découvrir AgentMaurice
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Problématiques clés */}
+      <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+          <AlertTriangle className="w-6 h-6 text-orange-500" />
+          Problématiques clés pour une plateforme de production
+        </h3>
+        <p className="text-slate-600 mb-6">
+          Cette démo interactive a abordé les concepts fondamentaux. Voici comment chaque étape se transpose en défi de production :
+        </p>
+
+        <div className="space-y-4">
+          {/* Step 0 */}
+          <div className="border-l-4 border-blue-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <Globe className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 0 : Architecture API & Sécurité</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Gérer plusieurs fournisseurs LLM (OpenAI, Anthropic, Google, Ollama) avec des API différentes.
+                  <strong> Solution :</strong> Abstraction unifiée, gestion des clés API par environnement, rotation automatique, rate limiting par utilisateur/projet.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 1-2 */}
+          <div className="border-l-4 border-purple-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <UserCircle className="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étapes 1-2 : Gestion des prompts système</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Versionner, tester et déployer des prompts système pour des centaines d'agents différents.
+                  <strong> Solution :</strong> Prompt registry versionnée, A/B testing, rollback instantané, templates réutilisables.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="border-l-4 border-green-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <MessageSquare className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 3 : Persistance des conversations</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Stocker et restaurer des millions de conversations utilisateur avec recherche rapide.
+                  <strong> Solution :</strong> Base de données vectorielle, compression intelligente, archivage automatique, conformité RGPD (droit à l'oubli).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 4-5 */}
+          <div className="border-l-4 border-yellow-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <FileCode className="w-5 h-5 text-yellow-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étapes 4-5 : Validation et formatage des sorties</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Garantir des réponses au format attendu (JSON, XML, CSV) même quand le LLM dévie.
+                  <strong> Solution :</strong> Schémas de validation (Pydantic, Zod), retry avec correction automatique, fallback gracieux, monitoring des erreurs de format.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 6 */}
+          <div className="border-l-4 border-red-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 6 : Gestion des conflits de contexte</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Éviter les conflits entre instructions système, contexte utilisateur et données RAG.
+                  <strong> Solution :</strong> Hiérarchie de priorités claire, détection automatique de conflits, alertes pour les développeurs, tests de régression systématiques.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 7 */}
+          <div className="border-l-4 border-indigo-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <Database className="w-5 h-5 text-indigo-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 7 : RAG à grande échelle</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Indexer des millions de documents, recherche vectorielle rapide (&lt;100ms), fraîcheur des données.
+                  <strong> Solution :</strong> Bases vectorielles distribuées (Pinecone, Weaviate), chunking intelligent, embedding cache, mise à jour incrémentale, hybrid search (dense + sparse).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 8 */}
+          <div className="border-l-4 border-pink-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <Thermometer className="w-5 h-5 text-pink-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 8 : Optimisation des paramètres</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Trouver les meilleurs paramètres (température, top_p, max_tokens) pour chaque use case.
+                  <strong> Solution :</strong> Benchmarks automatisés, optimisation bayésienne, profils prédéfinis par tâche, coûts vs qualité.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 9 */}
+          <div className="border-l-4 border-teal-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <FileText className="w-5 h-5 text-teal-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 9 : Gestion des coûts et de la latence</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Maîtriser les coûts (tokens = $$$) et latence avec de longs contextes.
+                  <strong> Solution :</strong> Résumé automatique, compression sémantique, cache de contexte, budgets par projet/utilisateur, alertes de dépassement, analytics en temps réel.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 10 */}
+          <div className="border-l-4 border-orange-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <ShieldAlert className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 10 : Sécurité et conformité</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Protection contre injection de prompts, fuites de données sensibles, conformité RGPD/SOC2.
+                  <strong> Solution :</strong> Sanitization des inputs, guardrails (Nvidia NeMo, Lakera), PII detection/masking, audit trail complet, tests de sécurité automatisés, red teaming.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 11 */}
+          <div className="border-l-4 border-cyan-500 pl-4 py-2">
+            <div className="flex items-start gap-3">
+              <Wrench className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-semibold text-slate-800">Étape 11 : Orchestration MCP multi-outils</h4>
+                <p className="text-sm text-slate-600 mt-1">
+                  <strong>Défi :</strong> Orchestrer des centaines d'outils MCP avec retry, timeout, circuit breakers, gestion d'erreurs.
+                  <strong> Solution :</strong> Registry d'outils, workflows visuels, exécution distribuée, monitoring par outil, fallback strategies, versioning des schémas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Problématiques additionnelles */}
+      <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+          <Sparkles className="w-6 h-6 text-purple-500" />
+          Problématiques supplémentaires en production
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">🔍 Observabilité</h4>
+            <p className="text-sm text-slate-600">
+              Traçabilité complète : logs, métriques, traces distribuées (OpenTelemetry), debugging de chaînes complexes, dashboards temps réel.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">⚡ Performance</h4>
+            <p className="text-sm text-slate-600">
+              Streaming de réponses, batch processing, parallélisation, mise en cache intelligente, CDN pour les assets statiques.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">🎯 Évaluation qualité</h4>
+            <p className="text-sm text-slate-600">
+              Tests automatisés (RAGAS, TruLens), human feedback loop, métriques custom, A/B testing continu, regression detection.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">🏢 Multi-tenancy</h4>
+            <p className="text-sm text-slate-600">
+              Isolation des données par tenant, quotas personnalisés, billing précis, SLA différenciés, white-labeling.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">🔄 CI/CD pour LLMs</h4>
+            <p className="text-sm text-slate-600">
+              Pipeline de test de prompts, déploiement canary, feature flags, rollback automatique sur dégradation qualité.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <h4 className="font-semibold text-slate-800 mb-2">📊 Gouvernance</h4>
+            <p className="text-sm text-slate-600">
+              Approbation des prompts, traçabilité des décisions, bias detection, explainability, audit compliance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl shadow-lg p-8 border-2 border-green-200">
+        <div className="text-center">
+          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-slate-800 mb-3">Félicitations !</h3>
+          <p className="text-slate-700 mb-6 max-w-2xl mx-auto">
+            Vous avez exploré les fondamentaux du contexte LLM. Ces concepts sont les briques de base pour construire des applications IA robustes et scalables. AgentMaurice vous permet de passer de ces concepts à la production avec gouvernance, observabilité et workflows visuels.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button
+              onClick={() => navigate("/")}
+              variant="outline"
+              className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50"
+            >
+              Retour à l'accueil
+            </Button>
+            <Button
+              onClick={() => navigate("/step0")}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+            >
+              Revoir les étapes
+            </Button>
+            <Button
+              onClick={() => window.open('https://agentmaurice.ai', '_blank')}
+              className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white"
+            >
+              Découvrir AgentMaurice
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ApiAnatomyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8 space-y-6">
@@ -1288,6 +1572,14 @@ function App() {
           element={
             <Layout>
               <Editor />
+            </Layout>
+          }
+        />
+        <Route
+          path="/conclusion"
+          element={
+            <Layout>
+              <ConclusionPage />
             </Layout>
           }
         />
