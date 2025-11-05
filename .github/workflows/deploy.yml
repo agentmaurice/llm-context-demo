@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - claude/repo-analysis-explanation-011CUoFfGP35igJ2w8ZhuK76
   workflow_dispatch:
 
 permissions:
